@@ -1,7 +1,5 @@
 header {
   display: flex;
-  position: fixed;
-  margin-left: 16rem;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
@@ -9,7 +7,6 @@ header {
   border-bottom: 1px solid var(--margin-color);
   color: var(--text-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
   z-index: 5;
 }
 .fileDetails {
@@ -26,7 +23,6 @@ header {
   color: var(--text-color);
 }
 .theme-btn {
-  margin-right: 21rem;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: var(--margin-color);
@@ -34,4 +30,13 @@ header {
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+}
+.title {
+  display: block;
+  margin: 2px;
+}
+.fileExplorerTxt {
+  font-weight: 400; /* font-semibold */
+  color: var(--text-color); /* text-gray-700 */
+  margin-block: 0;
 }

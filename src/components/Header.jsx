@@ -2,6 +2,9 @@ import "./Header.css";
 function Header({ selectedFile, selectedFolder, onToggleTheme }) {
   return (
     <header className="header">
+      <div className="title">
+        <h2 className="fileExplorerTxt">📁 React Explorer</h2>
+      </div>
       <div className="fileDetails">
         {selectedFile ? (
           <h2>Selected File: {selectedFile}</h2>

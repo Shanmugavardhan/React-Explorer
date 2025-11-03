@@ -2,22 +2,24 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
+  max-height: 100vh;
 }
-.sidePanel {
+.fullPanel {
   display: flex; /* flex */
-  position: fixed;
-  height: 97.5vh; /* h-screen = full viewport height */
+  height: 92.5vh; /* h-screen = full viewport height */
+  overflow: hidden;
 }
 
-.folderTree {
+.leftPanel {
   width: 16rem;
+  margin-bottom: 20px;
 }
 
 .rightPanel {
   flex: 1 1 0%;
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
+  margin: 0;
 }
 
 .fileList {

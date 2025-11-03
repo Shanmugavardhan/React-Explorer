@@ -66,11 +66,8 @@ const DirectoryTree = ({ onSelectFolder }) => {
     });
   };
 
-  return (
+  return (    
     <div className="directoryTree">
-      <div className="title">
-        <h2 className="fileExplorerTxt">📁 File Explorer</h2>
-      </div>
       <div className="treeContainer">{renderTree(fileStructure)}</div>
     </div>
   );

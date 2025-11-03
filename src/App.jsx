@@ -24,9 +24,9 @@ function App() {
         selectedFolder={selectedFolder}
         onToggleTheme={toggleTheme}
       />
-      <div className="sidePanel">
+      <div className="fullPanel">
         {/* Sidebar */}
-        <div className="folderTree">
+        <div className="leftPanel">
           <DirectoryTree
             onSelectFolder={(path) => {
               setSelectedFolder(path);
