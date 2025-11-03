@@ -1,0 +1,37 @@
+header {
+  display: flex;
+  position: fixed;
+  margin-left: 16rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--margin-color);
+  color: var(--text-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 5;
+}
+.fileDetails {
+  padding: 0.25rem;
+}
+.fileDetails h2 {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-block: 0;
+}
+.fileDetails p {
+  margin: 0;
+  color: var(--text-color);
+}
+.theme-btn {
+  margin-right: 21rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--margin-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}

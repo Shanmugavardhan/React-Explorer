@@ -1,0 +1,13 @@
+:root {
+  --bg-color: #ffffff; /* Background color */
+  --margin-color: #d3d3d3; /* Margin or container padding color */
+  --item-hover-color: #d3d3d3; /* Item hover background */
+  --text-color: #000000; /* Primary text color */
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a; /* Dark background */
+  --margin-color: #383838; /* Margin or container padding */
+  --item-hover-color: #333333; /* Hover state background */
+  --text-color: #ffffff; /* Light text for contrast */
+}
