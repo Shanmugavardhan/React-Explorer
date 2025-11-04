@@ -26,3 +26,83 @@ body {
   flex: 1 1 0%;
   overflow: hidden;
 }
+.menuBar {
+  display: flex;
+  height: 2rem;
+  padding: 0rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--margin-color);
+}
+.menuBar p {
+  color: var(--text-color);
+}
+
+.sizeButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sizeIcon {
+  color: var(--text-color);
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sizeIcon:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+  /* container for each icon */
+  .iconBox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    margin: 0 0px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+    user-select: none;
+  }
+
+  /* Icon sizing — keep pointer events off the icon so the container handles clicks */
+  .iconBox .sizeIcon {
+    pointer-events: none;
+    display: inline-block;
+    line-height: 1;
+  }
+
+  /* different icon sizes */
+  .sizeIcon.small {
+    font-size: 10px;
+  }
+
+  .sizeIcon.medium {
+    font-size: 15px;
+  }
+
+  .sizeIcon.large {
+    font-size: 17px;
+  }
+
+  /* responsive: shrink on very small screens */
+  @media (max-width: 420px) {
+    .iconBox {
+      width: 30px;
+      height: 30px;
+      margin: 0 4px;
+      border-radius: 6px;
+    }
+    .sizeIcon.small { font-size: 12px; }
+    .sizeIcon.medium { font-size: 16px; }
+    .sizeIcon.large { font-size: 20px; }
+  }

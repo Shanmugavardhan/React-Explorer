@@ -24,7 +24,7 @@ const FileList = ({ folderPath, onFileClick }) => {
   const [visibleFiles, setVisibleFiles] = useState([]); // holds only the files that are 'currently rendered' on the screen.
   const [allFiles, setAllFiles] = useState([]); //holds the complete list of files for the currently selected 'folderPath'.
   const observerRef = useRef(null);
-  const BATCH_SIZE = 20;
+  const BATCH_SIZE = 40;
   useEffect(() => {
     if (!folderPath) return;
     const files = getFilesFromPath(fileStructure, folderPath);
