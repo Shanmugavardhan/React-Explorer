@@ -1,24 +1,55 @@
 import React from "react";
 import "./FileCard.css";
-import { FiFileText, FiImage, FiMusic, FiVideo, FiFile } from "react-icons/fi";
+import {
+  FiFileText,
+  FiImage,
+  FiMusic,
+  FiVideo,
+  FiFolder,
+} from "react-icons/fi";
 
-const getFileIcon = (name) => {
+/**
+ * Returns the correct icon based on file type or extension
+ */
+const getFileIcon = (name, type) => {
+  const baseStyle = {
+    color: "var(--text-color)",
+    transition: "all 0.3s ease",
+  };
+
+  if (type === "folder") {
+    return <FiFolder style={{ ...baseStyle, color: "var(--text-color)" }} />;
+  }
+
   const ext = name.split(".").pop().toLowerCase();
-  if (["jpg", "jpeg", "png", "gif"].includes(ext))
-    return <FiImage style={{color: 'var(--text-color)'}} />;
+
+  if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext))
+    return <FiImage style={{ ...baseStyle, color: "var(--text-color)" }} />;
   if (["mp3", "wav", "ogg"].includes(ext))
-    return <FiMusic style={{color: 'var(--text-color)'}} />;
-  if (["mp4", "mkv"].includes(ext)) return <FiVideo style={{color: 'var(--text-color)'}} />;
-  if (["pdf", "txt", "doc", "md", "docx"])
-    return <FiFileText style={{color: 'var(--text-color)'}} />;
-  return <FiFile style={{color: 'var(--text-color)'}} />;
+    return <FiMusic style={{ ...baseStyle, color: "var(--text-color)" }} />;
+  if (["mp4", "mkv", "mov"].includes(ext))
+    return <FiVideo style={{ ...baseStyle, color: "var(--text-color)" }} />;
+
+  // Default file icon
+  return <FiFileText style={{ ...baseStyle, color: "var(--text-color)" }} />;
 };
-const FileCard = ({ name, onClick }) => {
+
+/**
+ * FileCard Component
+ * - Displays a folder or file icon
+ * - Handles click for both file/folder
+ */
+const FileCard = ({ name, type, onClick }) => {
   return (
-    <div onClick={onClick} className="card">
-      <div className="icon">{getFileIcon(name)}</div>
-      <p>{name}</p>
+    <div
+      onClick={onClick}
+      className={`card ${type}`}
+      title={type === "folder" ? `Open ${name}` : name}
+    >
+      <div className="icon">{getFileIcon(name, type)}</div>
+      <p className="name">{name}</p>
     </div>
   );
 };
+
 export default FileCard;

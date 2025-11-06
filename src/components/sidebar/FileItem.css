@@ -2,20 +2,23 @@
   display: flex; /* flex */
   align-items: center; /* items-center */
   gap: 0.5rem; /* gap-2 = 8px */
-  margin-left: 1.5rem; /* ml-6 = 24px */
+  margin-left: 0.5rem; /* ml-6 = 24px */
   cursor: pointer; /* cursor-pointer */
   padding: 0.25rem 0.5rem; /* py-1 = 4px, px-2 = 8px */
   border-radius: 0.375rem; /* rounded-md = 6px */
-  transition: background-color 0.2s ease; /* transition-colors */
+  transition: background-color 0.3s ease; /* transition-colors */
 }
 .fileItem:hover {
   background-color: var(--item-hover-color); /* hover:bg-gray-100 */
+  transition: all 0.3s ease;
 }
 
 .fileIcon {
   color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 .fileName {
   color: var(--text-color);
+  transition: all 0.3s ease;
 }

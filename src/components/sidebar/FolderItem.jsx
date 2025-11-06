@@ -8,7 +8,6 @@ const FolderItem = ({ name, expanded, onClick }) => {
       onClick={onClick}
       className="folderItem"
     >
-      {expanded ? <FiFolderMinus /> : <FiFolderPlus />}
       <FiFolder className="folderIcon" />
       <span className="folderName">{name}</span>
     </div>

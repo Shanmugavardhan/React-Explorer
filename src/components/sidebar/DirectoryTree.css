@@ -3,8 +3,9 @@
 }
 
 .expandedFolder {
-  margin-left: 1rem; /* ml-4 = 1rem */
+  margin-left: 0.5rem; /* ml-4 = 1rem */
   border-left: 1px solid var(--margin-color); /* border-l + border-gray-300 */
+  transition: all 0.3s ease;
   padding-left: 0.5rem;
 }
 
@@ -16,6 +17,7 @@
   border-right: 1px solid var(--margin-color); /* border-r + border-gray-300 */
   scrollbar-width: thin;
   scrollbar-color: var(--text-color) var(--bg-color);
+  transition: all 0.3s ease;
 }
 
 

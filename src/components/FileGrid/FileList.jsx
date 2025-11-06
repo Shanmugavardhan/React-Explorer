@@ -4,21 +4,38 @@ import fileStructure from "../../data/fileStructure.json";
 import { useState, useEffect, useRef } from "react";
 
 const getFilesFromPath = (structure, path) => {
-  const parts = path.split("/");
+  if (!path) return [];
+
+  // Split path by "/" while preserving keys with spaces or colons
+  const parts = path.split("/").filter(Boolean);
   let current = structure;
 
+  // Traverse the structure according to path
   for (const part of parts) {
-    if (!current[part]) return [];
+    if (!current || !current[part]) return [];
     current = current[part];
   }
-  if (Array.isArray(current)) return current;
-  if (typeof current === "object") {
-    return Object.values(current).flatMap((item) =>
-      Array.isArray(item) ? item : getFilesFromPath(item, "")
-    );
+
+  // ✅ CASE 1: If the final node is an array — directly return files
+  if (Array.isArray(current)) {
+    return current;
   }
+
+  // ✅ CASE 2: If it's an object — collect all direct files inside any arrays
+  if (typeof current === "object") {
+    const files = [];
+    for (const key in current) {
+      if (Array.isArray(current[key])) {
+        files.push(...current[key]);
+      }
+    }
+    return files;
+  }
+
+  // Fallback (shouldn't happen)
   return [];
 };
+
 
 const FileList = ({ folderPath, onFileClick }) => {
   const [visibleFiles, setVisibleFiles] = useState([]); // holds only the files that are 'currently rendered' on the screen.

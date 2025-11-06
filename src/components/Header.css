@@ -7,6 +7,7 @@ header {
   border-bottom: 1px solid var(--margin-color);
   color: var(--text-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
   z-index: 5;
 }
 .fileDetails {
@@ -17,16 +18,19 @@ header {
   font-size: 1rem;
   color: var(--text-color);
   margin-block: 0;
+  transition: all 0.3s ease;
 }
 .fileDetails p {
   margin: 0;
   color: var(--text-color);
+  transition: all 0.3s ease;
 }
 .theme-btn {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: var(--margin-color);
   color: var(--text-color);
+  transition: all 0.3s ease;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -37,6 +41,19 @@ header {
 }
 .fileExplorerTxt {
   font-weight: 400; /* font-semibold */
+  font-size: 1.25rem;
   color: var(--text-color); /* text-gray-700 */
+  transition: all 0.3s ease;
   margin-block: 0;
+}
+@media (max-width: 425px){
+  header{
+    padding: 1rem 1rem;
+  }
+  .title{
+    width: 200px;
+  }
+  .fileExplorerTxt{
+    font-size: 1rem;
+  }
 }

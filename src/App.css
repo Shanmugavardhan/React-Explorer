@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
+  transition: all 0.3s ease;
   max-height: 100vh;
 }
 .fullPanel {
@@ -33,9 +34,11 @@ body {
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--margin-color);
+  transition: all 0.3s ease;
 }
 .menuBar p {
   color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 .sizeButtons {
@@ -49,12 +52,13 @@ body {
   padding: 4px;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .sizeIcon:hover {
   background-color: var(--text-color);
   color: var(--bg-color);
+  transition: all 0.3s ease;
 }
 
   /* container for each icon */

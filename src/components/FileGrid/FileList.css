@@ -4,6 +4,7 @@
   padding: 1rem;
   scrollbar-width: thin;
   scrollbar-color: var(--text-color) var(--bg-color);
+  transition: all 0.3s ease;
 }
 .visibleFiles {
   display: flex;
@@ -11,6 +12,7 @@
 }
 .list p {
   color: var(--text-color);
+  transition: all 0.3s ease;
 }
 .lazy {
   height: 2.5rem;
