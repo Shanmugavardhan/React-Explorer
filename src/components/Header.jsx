@@ -1,7 +1,7 @@
 import "./Header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function Header({ selectedFile, selectedFolder, onToggleTheme }) {
+function Header({ selectedFile, selectedFolder, onToggleTheme, theme }) {
   return (
     <header className="header">
       <div className="title">
@@ -17,7 +17,11 @@ function Header({ selectedFile, selectedFolder, onToggleTheme }) {
         )}
       </div>
       <button onClick={onToggleTheme} className="theme-btn">
-        <FontAwesomeIcon icon="fa-solid fa-moon"/>
+        {theme === "dark" ? (
+          <FontAwesomeIcon icon="fa-solid fa-sun"/>
+        ) : (
+          <FontAwesomeIcon icon="fa-solid fa-moon" />
+        )}
       </button>
     </header>
   );
