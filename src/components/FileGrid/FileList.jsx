@@ -4,38 +4,29 @@ import fileStructure from "../../data/fileStructure.json";
 import { useState, useEffect, useRef } from "react";
 
 const getFilesFromPath = (structure, path) => {
-  if (!path) return [];
+  if (!path) return { folders: [], files: [] };
 
-  // Split path by "/" while preserving keys with spaces or colons
   const parts = path.split("/").filter(Boolean);
   let current = structure;
 
-  // Traverse the structure according to path
   for (const part of parts) {
-    if (!current || !current[part]) return [];
+    if (!current || !current[part]) return { folders: [], files: [] };
     current = current[part];
   }
 
-  // ✅ CASE 1: If the final node is an array — directly return files
+  // ✅ CASE 1: Folder directly contains files (array)
   if (Array.isArray(current)) {
-    return current;
+    return { folders: [], files: current };
   }
 
-  // ✅ CASE 2: If it's an object — collect all direct files inside any arrays
+  // ✅ CASE 2: Folder contains nested folders (object)
   if (typeof current === "object") {
-    const files = [];
-    for (const key in current) {
-      if (Array.isArray(current[key])) {
-        files.push(...current[key]);
-      }
-    }
-    return files;
+    const folders = Object.keys(current);
+    return { folders, files: [] };
   }
 
-  // Fallback (shouldn't happen)
-  return [];
+  return { folders: [], files: [] };
 };
-
 
 const FileList = ({ folderPath, onFileClick }) => {
   const [visibleFiles, setVisibleFiles] = useState([]); // holds only the files that are 'currently rendered' on the screen.
@@ -44,13 +35,17 @@ const FileList = ({ folderPath, onFileClick }) => {
   const BATCH_SIZE = 40;
   useEffect(() => {
     if (!folderPath) return;
-    const files = getFilesFromPath(fileStructure, folderPath);
-    setAllFiles(files);
-    setVisibleFiles(files.slice(0, BATCH_SIZE)); //takes only a slice of the array (say 20) and sets in visibleFiles.
+    const { folders, files } = getFilesFromPath(fileStructure, folderPath);
+    const combinedItems = [
+      ...folders.map((name) => ({ name, type: "folder" })),
+      ...files.map((name) => ({ name, type: "file" })),
+    ];
+    setAllFiles(combinedItems);
+    setVisibleFiles(combinedItems.slice(0, BATCH_SIZE));
   }, [folderPath]);
-  
-    //here im using the lazy loading effect
-  
+
+  //here im using the lazy loading effect
+
   useEffect(() => {
     if (!observerRef.current) return;
     const observer = new IntersectionObserver((entries) => {
@@ -68,11 +63,18 @@ const FileList = ({ folderPath, onFileClick }) => {
     <div className="list">
       {visibleFiles.length > 0 ? (
         <div className="visibleFiles">
-          {visibleFiles.map((file) => (
+          {visibleFiles.map((item) => (
             <FileCard
-              key={file}
-              name={file}
-              onClick={() => onFileClick(folderPath, file)}
+              key={item.name}
+              name={item.name}
+              type={item.type}
+              onClick={() => {
+                if (item.type === "folder") {
+                  onFileClick(`${folderPath}/${item.name}`, ""); // navigate deeper
+                } else {
+                  onFileClick(folderPath, item.name);
+                }
+              }}
             />
           ))}
         </div>
