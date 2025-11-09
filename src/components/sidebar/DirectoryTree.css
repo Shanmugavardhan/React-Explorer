@@ -10,6 +10,7 @@
 }
 
 .directoryTree {
+  display: flex;
   height: 100%;
   padding: 0.75rem; /* p-3 = 12px */
   overflow-y: auto; /* overflow-y-auto */
@@ -18,9 +19,10 @@
   scrollbar-width: thin;
   scrollbar-color: var(--text-color) var(--bg-color);
   transition: all 0.3s ease;
+  flex: 1;
 }
-
 
 .treeContainer {
   margin: 0;
+  flex-shrink: 0;
 }

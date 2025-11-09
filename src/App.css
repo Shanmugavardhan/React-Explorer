@@ -115,7 +115,10 @@ body {
 }
 
 /* responsive: shrink on very small screens */
-@media (max-width: 420px) {
+@media (max-width: 425px) {
+  .divider{
+    display: none;
+  }
   .iconBox {
     width: 30px;
     height: 30px;
